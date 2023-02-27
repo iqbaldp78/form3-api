@@ -1,0 +1,8 @@
+{
+    "SERVER_PORT": 8081,
+    "DB_USER": "ts_account",
+    "DB_PASSWORD": "testing",
+    "DB_HOST": "postgres",
+    "DB_PORT": 5432,
+    "DB_NAME": "ts_accountdb"
+}
