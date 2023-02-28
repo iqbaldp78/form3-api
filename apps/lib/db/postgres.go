@@ -31,10 +31,10 @@ func New(dbname, user, password, host string, port int) error {
 	db.SetMaxOpenConns(10)
 
 	err := db.Ping()
-	if err != nil {
-		return err
-	}
 
+	if err != nil {
+		panic(err)
+	}
 	database = db
 
 	return nil

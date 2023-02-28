@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	engine := apps.NewEngine("config")
-	engine.Run(fmt.Sprintf(":%v", viper.GetInt("SERVER_PORT")))
+	engine := apps.NewEngine()
+	engine.Run(fmt.Sprintf("%v", viper.GetString("server.address")))
 }

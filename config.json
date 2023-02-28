@@ -1,8 +1,17 @@
 {
-    "SERVER_PORT": 8081,
-    "DB_USER": "ts_account",
-    "DB_PASSWORD": "testing",
-    "DB_HOST": "postgres",
-    "DB_PORT": 5432,
-    "DB_NAME": "ts_accountdb"
+    "debug": true,
+    "server": {
+      "address": ":8081"
+    },
+    "database": {
+        "host": "localhost",
+        "port": "3321",
+        "user": "root",
+        "pass": "password",
+        "name": "interview_accountapi"
+    },
+    "client":{
+        "form3_url":"http://localhost:8030"
+    }
 }
+  

@@ -1,7 +1,7 @@
 package apps
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -9,29 +9,31 @@ import (
 	"github.com/spf13/viper"
 )
 
-/*NewEngine used for create new engine*/
-func NewEngine(config string) *gin.Engine {
-	setConfig(config)
-	router := gin.Default()
-	db.New(
-		viper.GetString("DB_NAME"),
-		viper.GetString("DB_USER"),
-		viper.GetString("DB_PASSWORD"),
-		viper.GetString("DB_HOST"),
-		viper.GetInt("DB_PORT"))
-	setRouterHandler(router)
-	setErrorHandler(router)
-	return router
-}
-
-//setConfig used for setup application configuration
-func setConfig(config string) {
-	viper.SetConfigName(config)
-	viper.AddConfigPath(".")
+func init() {
+	viper.SetConfigFile(`config.json`)
 	err := viper.ReadInConfig()
 	if err != nil {
-		panic(fmt.Errorf("configuration file not found: %s", err))
+		panic(err)
 	}
+
+	if viper.GetBool(`debug`) {
+		log.Println("Service RUN on DEBUG mode")
+	}
+}
+
+/*NewEngine used for create new engine*/
+func NewEngine() *gin.Engine {
+	// setConfig(config)
+	router := gin.Default()
+	db.New(
+		viper.GetString("database.name"),
+		viper.GetString("database.user"),
+		viper.GetString("database.pass"),
+		viper.GetString("database.host"),
+		viper.GetInt("database.port"))
+	setRouterHandler(router, db.GetDB())
+	setErrorHandler(router)
+	return router
 }
 
 /*setErrorHandler used for handling 404 request*/
