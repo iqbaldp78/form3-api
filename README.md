@@ -1,3 +1,12 @@
+# Notes
+My name Iqbal Dwi Prawira. I have been using the Go programming language for about 4 years.
+
+
+# How to run
+
+```docker-compose up```
+
+refer to `example_client` folder, to show how to use this SDK/library.
 # Form3 Take Home Exercise
 
 Engineers at Form3 build highly available distributed systems in a microservices environment. Our take home test is designed to evaluate real world activities that are involved with this role. We recognise that this may not be as mentally challenging and may take longer to implement than some algorithmic tests that are often seen in interview exercises. Our approach however helps ensure that you will be working with a team of engineers with the necessary practical skills for the role (as well as a diverse range of technical wizardry). 
