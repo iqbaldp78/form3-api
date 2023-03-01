@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  form3:
+    image: golang:1.18
+    volumes:
+      - .:/app/form3
+    working_dir: /app/form3
+    command: go test -v ./...
+    depends_on:
+      - accountapi
   accountapi:
     image: form3tech/interview-accountapi:v1.0.0-46-gb3b6c766
     restart: on-failure

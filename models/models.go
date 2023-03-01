@@ -1,5 +1,9 @@
 package models
 
+import (
+	"github.com/google/uuid"
+)
+
 // Account represents an account in the form3 org section.
 // See https://api-docs.form3.tech/api.html#organisation-accounts for
 // more information about fields.
@@ -29,6 +33,13 @@ type AccountAttributes struct {
 	Switched                *bool    `json:"switched,omitempty"`
 }
 
-type RespGetAccount struct {
-	Data AccountData `json:"data,omitempty"`
+type PayloadCreateAccount struct {
+	Attributes *AccountAttributes `json:"attributes,omitempty"`
+	Version    *int64             `json:"version,omitempty"`
+}
+
+func (a *AccountData) SetDefault() {
+	a.ID = uuid.NewString()
+	a.OrganisationID = uuid.NewString()
+	a.Type = "accounts"
 }
